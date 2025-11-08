@@ -30,8 +30,8 @@ jobs:
         with:
           args: --delete
         env:
-          AWS_S3_BUCKET: my-react-frontend
+          AWS_S3_BUCKET: quizmaster-s3-89
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ap-south-1
+          AWS_REGION: ap-south-2
           SOURCE_DIR: build
