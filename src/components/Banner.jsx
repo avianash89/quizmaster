@@ -16,7 +16,7 @@ const Banner = () => {
           <div className="space-y-12">
             <h1 className="text-4xl font-bold">
               Hello, welcomes here to QuizMaster
-              <span className="text-pink-500"> !!! Upload Image, Pdf generate Question for Quiz !!!</span>
+              <span className="text-pink-500"> !!! Upload Image, Pdf generate Question for Quiz - Abhishek!!!</span>
             </h1>
             <p className="text-xl">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam
