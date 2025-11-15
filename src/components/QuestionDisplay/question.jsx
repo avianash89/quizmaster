@@ -19,7 +19,7 @@ const Question = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get("/api/questions")
+        const response = await axios.get("/api/questions");
         setQuestions(response.data);
         setLoading(false);
       } catch (error) {
@@ -54,6 +54,8 @@ const Question = () => {
         questionCount: questions.length,
         correctAnswers,
         wrongAnswers,
+        questions, // 👈 added
+        selectedOptions, // 👈 added
       },
     });
   };
@@ -65,7 +67,10 @@ const Question = () => {
     });
   };
 
-  if (loading) return <div className="text-center mt-10 text-lg">Loading questions...</div>;
+  if (loading)
+    return (
+      <div className="text-center mt-10 text-lg">Loading questions...</div>
+    );
   if (!questions.length) return <div>No questions available.</div>;
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -74,7 +79,6 @@ const Question = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center p-4">
       <div className="w-full max-w-3xl bg-white/10 backdrop-blur-lg shadow-xl rounded-2xl p-6 border border-white/20">
-        
         {/* Timer */}
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-xl font-semibold text-white">Quiz Questions</h1>
@@ -100,8 +104,7 @@ const Question = () => {
                   selectedOption === option
                     ? "bg-blue-600 text-white border-blue-400"
                     : "bg-white/10 text-gray-200 border-white/20 hover:bg-white/20"
-                }`}
-            >
+                }`}>
               <input
                 type="radio"
                 name={`option-${currentQuestionIndex}`}
@@ -120,16 +123,14 @@ const Question = () => {
           <button
             onClick={() => setCurrentQuestionIndex((prev) => prev - 1)}
             disabled={currentQuestionIndex === 0}
-            className="px-5 py-2 rounded-xl bg-gray-700 text-white disabled:opacity-40 hover:bg-gray-600"
-          >
+            className="px-5 py-2 rounded-xl bg-gray-700 text-white disabled:opacity-40 hover:bg-gray-600">
             Previous
           </button>
 
           <button
             onClick={() => setCurrentQuestionIndex((prev) => prev + 1)}
             disabled={currentQuestionIndex === questions.length - 1}
-            className="px-5 py-2 rounded-xl bg-blue-600 text-white disabled:opacity-40 hover:bg-blue-500"
-          >
+            className="px-5 py-2 rounded-xl bg-blue-600 text-white disabled:opacity-40 hover:bg-blue-500">
             Next
           </button>
         </div>
@@ -137,8 +138,7 @@ const Question = () => {
         {/* Submit Button */}
         <button
           className="w-full mt-6 bg-green-600 hover:bg-green-500 text-white font-semibold py-3 rounded-xl shadow-lg"
-          onClick={handleSubmitQuiz}
-        >
+          onClick={handleSubmitQuiz}>
           Submit Quiz
         </button>
       </div>

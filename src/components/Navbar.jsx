@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Login from "./Login";
 import Logout from "./Logout";
 import { useAuth } from "../context/AuthProvider";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [authUser, setAuthUser] = useAuth();
@@ -87,7 +88,9 @@ function Navbar() {
                 {navItems}
               </ul>
             </div>
-            <a className="text-2xl font-bold cursor-pointer">QuizMaster</a>
+            <Link to="/" className="text-2xl font-bold cursor-pointer">
+              QuizMaster
+            </Link>
           </div>
           <div className="navbar-end space-x-3">
             <div className="navbar-center hidden lg:flex">
@@ -166,5 +169,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-
