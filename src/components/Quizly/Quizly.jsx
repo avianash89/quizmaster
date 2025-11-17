@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Question from "../QuestionDisplay/question";
 
-export default function ImageUploader() {
+export default function Quizly() {
   const [uploadType, setUploadType] = useState("paragraph");
   const [paragraph, setParagraph] = useState("");
   const [url, setUrl] = useState("");
@@ -33,7 +33,7 @@ export default function ImageUploader() {
       }
 
       try {
-        const response = await fetch("http://44.222.203.3:3000/api/v1/process_paragraph", {
+        const response = await fetch("/api/v1/process_paragraph", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

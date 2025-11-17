@@ -3,12 +3,13 @@ import Home from "./home/Home_1";
 import Contact from "./components/Contact";
 import About from "./components/About";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Upload from "./upload/Upload";
+import Quizly from "./upload/UploadQuiz.jsx";
 import Signup from "./components/Signup";
 import { Toaster } from "react-hot-toast";
 import { useAuth } from "./context/AuthProvider";
 import Result from "./components/Result/Result";
 import Question from "./components/QuestionDisplay/question";
+import UserDashBoard from "./components/QuizDashboard/userDashboard.tsx";
 
 function App() {
   const [authUser, setAuthUser] = useAuth();
@@ -22,7 +23,8 @@ function App() {
             path="/upload"
             element={authUser ? <Upload /> : <Navigate to="/signup" />}
           /> */}
-          <Route path="/" element={<Upload />} />
+          <Route path="/" element={<Quizly />} />
+          <Route path="/dashboard" element={<UserDashBoard/>} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />

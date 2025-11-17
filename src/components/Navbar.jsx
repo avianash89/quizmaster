@@ -40,10 +40,15 @@ function Navbar() {
   const navItems = (
     <>
       <li>
-        <a href="/">Home</a>
+        <a href="/">Quizly</a>
       </li>
       <li>
-        <a href="/upload">Quizly</a>
+        <a
+          href="/dashboard"
+          class="px-3 py-2 rounded-lg transition 
+         hover:bg-pink-500 hover:text-white">
+          Dashboard
+        </a>
       </li>
       <li>
         <a href="/contact">Contact</a>
