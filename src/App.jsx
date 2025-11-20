@@ -10,6 +10,7 @@ import { useAuth } from "./context/AuthProvider";
 import Result from "./components/Result/Result";
 import Question from "./components/QuestionDisplay/question";
 import UserDashBoard from "./components/QuizDashboard/userDashboard.tsx";
+import Navbar from "./components/Navbar.jsx";
 
 function App() {
   const [authUser, setAuthUser] = useAuth();
@@ -17,6 +18,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <Navbar />
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
           {/* <Route
@@ -24,7 +26,7 @@ function App() {
             element={authUser ? <Upload /> : <Navigate to="/signup" />}
           /> */}
           <Route path="/" element={<Quizly />} />
-          <Route path="/dashboard" element={<UserDashBoard/>} />
+          <Route path="/dashboard" element={<UserDashBoard />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />

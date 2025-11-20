@@ -14,7 +14,7 @@ const Question = (quizQuestion) => {
 
   // GET FROM PREVIOUS PAGE
   const quizStartTime = location.state?.quizStartTime || new Date();
-  const { quizId, userId } = quizQuestion;
+  const { quizId, userId, passCriteria } = quizQuestion;
 
   const pointsPerCorrectAnswer = location.state?.pointsPerCorrectAnswer || 2;
   const pointsPerWrongAnswer = location.state?.pointsPerWrongAnswer || -1;
@@ -47,10 +47,12 @@ const Question = (quizQuestion) => {
     const timeTaken = (endTime - quizStartTime) / 1000;
 
     try {
-      const response = await axios.post("http://54.226.6.151:3000/api/v1/validate_question", {
+      const response = await axios.post("http://54.82.74.201:3000/api/v1/validate_question", {
         userId,
         quizId,
         submittedAnswers,
+        passCriteria: Number(passCriteria), // NEW
+        timeSpend: timeTaken, // NEW
       });
 
       const backendResult = response.data.data;
@@ -77,8 +79,8 @@ const Question = (quizQuestion) => {
           questionCount: backendResult.length,
           correctAnswers: correct,
           wrongAnswers: wrong,
-          backendResult, 
-          questions, 
+          backendResult,
+          questions,
         },
       });
     } catch (err) {

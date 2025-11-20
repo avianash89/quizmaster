@@ -14,6 +14,8 @@ export default function Quizly() {
   const [quizQuestion, setQuizQuestion] = useState([]);
   const [quizId, setQuizId] = useState("");
   const [userId, setUserId] = useState("");
+  const [passCriteria, setPassCriteria] = useState("60");
+
   const navigate = useNavigate();
   const defaultUserId = "FrontendTestUser";
   // ============================
@@ -33,7 +35,7 @@ export default function Quizly() {
       }
 
       try {
-        const response = await fetch("http://54.226.6.151:3000/api/v1/process_paragraph", {
+        const response = await fetch("/api/v1/process_paragraph", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -110,7 +112,7 @@ export default function Quizly() {
       formData.append("file", file);
 
       try {
-        const response = await fetch("/api/upload-image", {
+        const response = await fetch("http://54.82.74.201:3000/api/upload-image", {
           method: "POST",
           body: formData,
         });
@@ -226,15 +228,34 @@ export default function Quizly() {
                 <p className="text-gray-700">
                   <strong>Dynamic Questions Generated!</strong>
                   <br />
-                  Number of Questions: 5 — Time: 2 mins
+                  Number of Questions: {quizQuestion.length || 5}
+                  <br />
+                  Time: 2 mins
                   <br />
                   Category:{" "}
                   <span className="text-blue-700 font-semibold">Polity</span>
                 </p>
 
+                {/* Pass Criteria Dropdown */}
+                <div className="mt-4">
+                  <label className="font-semibold text-gray-700">
+                    Select Pass Criteria
+                  </label>
+                  <select
+                    value={passCriteria}
+                    onChange={(e) => setPassCriteria(e.target.value)}
+                    className="block w-full mt-2 p-2 border rounded-lg">
+                    {["50", "60", "70", "80", "90", "100"].map((p) => (
+                      <option key={p} value={p}>
+                        {p}%
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
                 <button
-                  className="mt-4 bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded-lg"
-                  onClick={handleStartQuiz}>
+                  className="mt-6 bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded-lg"
+                  onClick={() => setQuizStarted(true)}>
                   Start Quiz
                 </button>
               </div>
@@ -243,7 +264,12 @@ export default function Quizly() {
         </>
       ) : (
         <>
-          <Question quizQuestion={quizQuestion} quizId={quizId} userId={userId} />
+          <Question
+            quizQuestion={quizQuestion}
+            quizId={quizId}
+            userId={userId}
+            passCriteria={passCriteria}
+          />
         </>
       )}
     </div>
