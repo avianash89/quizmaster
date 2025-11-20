@@ -35,7 +35,7 @@ export default function Quizly() {
       }
 
       try {
-        const response = await fetch("/api/v1/process_paragraph", {
+        const response = await fetch("http://54.82.74.201:3000/api/v1/process_paragraph", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -112,7 +112,7 @@ export default function Quizly() {
       formData.append("file", file);
 
       try {
-        const response = await fetch("http://54.82.74.201:3000/api/upload-image", {
+        const response = await fetch("/api/upload-image", {
           method: "POST",
           body: formData,
         });
