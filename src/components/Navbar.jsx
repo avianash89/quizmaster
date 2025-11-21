@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Login from "./Login";
 import Logout from "./Logout";
-import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthProvider";
 
 function Navbar() {
   const [authUser, setAuthUser] = useAuth();
@@ -22,6 +22,8 @@ function Navbar() {
       document.body.classList.remove("dark");
     }
   }, [theme]);
+
+  const user = localStorage.getItem("auth");
 
   const [sticky, setSticky] = useState(false);
   useEffect(() => {

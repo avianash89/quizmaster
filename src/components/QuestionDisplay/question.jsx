@@ -47,7 +47,7 @@ const Question = (quizQuestion) => {
     const timeTaken = (endTime - quizStartTime) / 1000;
 
     try {
-      const response = await axios.post("http://54.82.74.201:3000/api/v1/validate_question", {
+      const response = await axios.post("/api/v1/validate_question", {
         userId,
         quizId,
         submittedAnswers,

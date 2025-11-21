@@ -1,32 +1,19 @@
-import React from 'react';
-import { useAuth } from '../context/AuthProvider';
-import toast from 'react-hot-toast';
+import React from "react";
+import { useAuth } from "../context/AuthProvider";
 
-function Logout() {
-    const [authUser, setAuthUser] = useAuth()
-    const handleLogout = () =>{
-       try {
-        setAuthUser({
-            ...authUser,
-            user: null
-        })
-        localStorage.removeItem("User")
-        toast.success("Logout Successfully")
-        setTimeout(() => {
-        window.location.reload();
-        }, 100);
-       } catch (error) {
-        toast.error("Error: " + error.message);
-        setTimeout(() =>{},1000)
-       } 
-    }
+export default function Logout() {
+  const [authUser, setAuthUser] = useAuth();
+
+  const handleLogout = () => {
+    setAuthUser(null);  // clears from state & localStorage
+  };
+
   return (
-    <div>
-        <button className="px-3 py-2 bg-pink-500 text-white rounded-md cursor-pointer"
-        onClick={handleLogout}
-        >Logout</button>
-    </div>
-  )
+    <button
+      className="bg-pink-500 text-white px-3 py-2 rounded-md hover:bg-red-700"
+      onClick={handleLogout}
+    >
+      Logout
+    </button>
+  );
 }
-
-export default Logout

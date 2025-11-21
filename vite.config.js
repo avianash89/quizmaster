@@ -8,7 +8,7 @@ export default defineConfig({
     // Proxy any request starting with `/api` to the backend to avoid CORS in dev
     proxy: {
       '/api': {
-        target: 'http://54.82.74.201:3000',
+        target: 'http://100.26.41.233:3000',
         changeOrigin: true,
         secure: false,
         // rewrite not required since we want to keep the `/api` prefix

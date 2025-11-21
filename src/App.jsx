@@ -11,6 +11,9 @@ import Result from "./components/Result/Result";
 import Question from "./components/QuestionDisplay/question";
 import UserDashBoard from "./components/QuizDashboard/userDashboard.tsx";
 import Navbar from "./components/Navbar.jsx";
+import Forgot from "./components/Password/ForgotPassword.jsx";
+import VerifyEmail from "./components/Password/VerifyEmail.jsx";
+
 
 function App() {
   const [authUser, setAuthUser] = useAuth();
@@ -32,6 +35,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/result" element={<Result />} />
           <Route path="/question" element={<Question />} />
+          <Route path="/forgot-password" element={<Forgot />} />
+          <Route path="/verify-email" element={<VerifyEmail />} />
+
         </Routes>
       </BrowserRouter>
       <Toaster />

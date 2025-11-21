@@ -46,7 +46,7 @@ export default function ModernUserDashboard() {
 
       const daysRange = rangeToDays[selectedRange];
 
-      const response = await fetch("http://54.82.74.201:8000/get_user_dashboard", {
+      const response = await fetch("http://100.26.41.233:8000/get_user_dashboard", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
